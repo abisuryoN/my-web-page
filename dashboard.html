@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anywhere App - Dashboard</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: #2E2E3A;
+      color: #FFFFFF;
+      display: flex;
+      height: 100vh;
+    }
+    .sidebar {
+      width: 250px;
+      background-color: #1C1C24;
+      padding: 20px;
+      box-shadow: 5px 0 15px rgba(0, 0, 0, 0.3);
+    }
+    .sidebar .logo {
+      display: flex;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+    .sidebar .logo i {
+      font-size: 24px;
+      margin-right: 10px;
+    }
+    .sidebar .logo span {
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .sidebar nav a {
+      display: block;
+      color: #FFFFFF;
+      text-decoration: none;
+      padding: 15px 0;
+      border-bottom: 1px solid #2E2E3A;
+      font-size: 18px;
+    }
+    .sidebar nav a:hover {
+      color: #007BFF;
+    }
+    .main-content {
+      flex-grow: 1;
+      padding: 40px;
+      background-color: #3A3A48;
+      display: flex;
+      flex-direction: column;
+    }
+    .main-content header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+    .main-content header .welcome {
+      font-size: 24px;
+    }
+    .main-content header button {
+      background: #2E2E3A;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      color: #FFFFFF;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .main-content header button:hover {
+      background: #007BFF;
+    }
+    .dashboard-section {
+      display: flex;
+      justify-content: space-between;
+    }
+    .card {
+      background-color: #2E2E3A;
+      border-radius: 10px;
+      padding: 20px;
+      width: 30%;
+      text-align: center;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    }
+    .card h3 {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+    .card p {
+      font-size: 16px;
+      color: #AAAAAA;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="logo">
+      <i class="fas fa-circle"></i>
+      <span>Anywhere App</span>
+    </div>
+    <nav>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="profile.html">Profile</a>
+      <a href="settings.html">Settings</a>
+      <a href="#" onclick="logOut()">Log Out</a>
+    </nav>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <header>
+      <div class="welcome">
+        Welcome, <strong id="user-name"></strong>!
+      </div>
+      <button onclick="logOut()">Log Out</button>
+    </header>
+
+    <div class="dashboard-section">
+      <div class="card">
+        <h3>Profile Information</h3>
+        <p>View and edit your profile details.</p>
+        <a href="profile.html" style="color: #007BFF;">Go to Profile</a>
+      </div>
+      <div class="card">
+        <h3>Settings</h3>
+        <p>Manage your account settings.</p>
+        <a href="settings.html" style="color: #007BFF;">Go to Settings</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('user-name').innerText = `${localStorage.getItem('firstName')} ${localStorage.getItem('lastName')}`;
+
+    function logOut() {
+      localStorage.clear(); // Hapus semua data
+      window.location.href = 'login.html'; // Kembali ke halaman login
+    }
+  </script>
+  
+</body>
+</html>

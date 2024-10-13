@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anywhere App - Settings</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: #2E2E3A;
+      color: #FFFFFF;
+      display: flex;
+      height: 100vh;
+    }
+    .sidebar {
+      width: 250px;
+      background-color: #1C1C24;
+      padding: 20px;
+      box-shadow: 5px 0 15px rgba(0, 0, 0, 0.3);
+    }
+    .sidebar .logo {
+      display: flex;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+    .sidebar .logo i {
+      font-size: 24px;
+      margin-right: 10px;
+    }
+    .sidebar .logo span {
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .sidebar nav a {
+      display: block;
+      color: #FFFFFF;
+      text-decoration: none;
+      padding: 15px 0;
+      border-bottom: 1px solid #2E2E3A;
+      font-size: 18px;
+    }
+    .sidebar nav a:hover {
+      color: #007BFF;
+    }
+    .main-content {
+      flex-grow: 1;
+      padding: 40px;
+      background-color: #3A3A48;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .main-content h2 {
+      margin-bottom: 40px;
+    }
+    .form-group {
+      display: flex;
+      margin-bottom: 20px;
+      width: 400px;
+    }
+    .form-group input {
+      background: #2E2E3A;
+      border: none;
+      padding: 15px;
+      border-radius: 10px;
+      color: #FFFFFF;
+      flex: 1;
+      margin-right: 10px;
+    }
+    .form-group input:last-child {
+      margin-right: 0;
+    }
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+      width: 400px;
+    }
+    .buttons button {
+      background: #007BFF;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      color: #FFFFFF;
+      cursor: pointer;
+    }
+    .buttons button:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="logo">
+      <i class="fas fa-circle"></i>
+      <span>Anywhere App</span>
+    </div>
+    <nav>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="profile.html">Profile</a>
+      <a href="settings.html">Settings</a>
+      <a href="#" onclick="logOut()">Log Out</a>
+    </nav>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <h2>Account Settings</h2>
+    <div class="form-group">
+      <input id="change-password" placeholder="New Password" type="password"/>
+    </div>
+    <div class="form-group">
+      <input id="confirm-password" placeholder="Confirm Password" type="password"/>
+    </div>
+    <div class="buttons">
+      <button onclick="changePassword()">Change Password</button>
+    </div>
+  </div>
+
+  <script>
+    function changePassword() {
+      const newPassword = document.getElementById('change-password').value;
+      const confirmPassword = document.getElementById('confirm-password').value;
+
+      if (newPassword && confirmPassword) {
+        if (newPassword === confirmPassword) {
+          // Simpan password baru ke localStorage (atau simpan di server dalam aplikasi nyata)
+          alert('Password changed successfully!');
+        } else {
+          alert('Passwords do not match!');
+        }
+      } else {
+        alert('Please fill in all fields');
+      }
+    }
+
+    function logOut() {
+      localStorage.clear(); // Hapus semua data
+      window.location.href = 'login.html'; // Kembali ke halaman login
+    }
+  </script>
+
+</body>
+</html>

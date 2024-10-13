@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anywhere App - Login</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: #2E2E3A;
+      color: #FFFFFF;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background: #1C1C24;
+      border-radius: 20px;
+      padding: 40px;
+      width: 800px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      text-align: center;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+    .header .logo {
+      display: flex;
+      align-items: center;
+    }
+    .header .logo i {
+      font-size: 24px;
+      margin-right: 10px;
+    }
+    .header nav a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 18px;
+    }
+    .form-container {
+      position: relative;
+    }
+    .form-container h2 {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+    .form-container h2 span {
+      color: #007BFF;
+    }
+    .form-group {
+      display: flex;
+      margin-bottom: 20px;
+    }
+    .form-group input {
+      background: #2E2E3A;
+      border: none;
+      padding: 15px;
+      border-radius: 10px;
+      color: #FFFFFF;
+      flex: 1;
+      margin-right: 10px;
+    }
+    .form-group input:last-child {
+      margin-right: 0;
+    }
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+    }
+    .buttons button {
+      background: #2E2E3A;
+      border: none;
+      padding: 15px 30px;
+      border-radius: 10px;
+      color: #FFFFFF;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .buttons button.primary {
+      background: #007BFF;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Halaman Login/Create Account -->
+  <div class="container">
+    <div class="header">
+      <div class="logo">
+        <i class="fas fa-circle"></i>
+        <span>Anywhere app.</span>
+      </div>
+      <nav>
+        <a href="home.html">Home</a>
+        <a href="join.html">Join</a>
+      </nav>
+    </div>
+    <div class="form-container">
+      <p>START FOR FREE</p>
+      <h2>Create new account<span>.</span></h2>
+      <p>Already A Member? <a href="#">Log In</a></p>
+      <div class="form-group">
+        <input id="first-name" placeholder="First Name" type="text"/>
+        <input id="last-name" placeholder="Last Name" type="text"/>
+      </div>
+      <div class="form-group">
+        <input id="email" placeholder="Email" type="email"/>
+      </div>
+      <div class="form-group">
+        <input id="password" placeholder="Password" type="password"/>
+      </div>
+      <div class="buttons">
+        <button class="primary" onclick="createAccount()">Create account</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function createAccount() {
+      const firstName = document.getElementById('first-name').value;
+      const lastName = document.getElementById('last-name').value;
+      const email = document.getElementById('email').value;
+
+      if (firstName && lastName && email) {
+        // Simpan data ke localStorage
+        localStorage.setItem('firstName', firstName);
+        localStorage.setItem('lastName', lastName);
+        localStorage.setItem('email', email);
+
+        // Redirect ke dashboard.html
+        window.location.href = 'dashboard.html';
+      } else {
+        alert('Please fill in all fields');
+      }
+    }
+  </script>
+  
+</body>
+</html>
